@@ -369,3 +369,30 @@ header{
 }
 
 }
+
+/* Botón Flotante de Mensajes */
+.floating-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #2563eb; /* El color azul de tu app */
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    text-decoration: none;
+    z-index: 1000; /* Asegura que quede por encima del contenido */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efecto al pasar el mouse */
+.floating-chat-btn:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}

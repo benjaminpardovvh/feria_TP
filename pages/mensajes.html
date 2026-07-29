@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabXP | Mensajes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/lobby.css">
+    <link rel="stylesheet" href="../static/css/mensajes.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../static/images/logo.png" alt="LabXP">
+        </div>
+
+        <div class="search">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Buscar en mensajes...">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="lobby.html">Inicio</a></li>
+            <li><a href="comoFunciona.html">Cómo funciona</a></li>
+            <li><a href="empresas.html">Empresas</a></li>
+        </ul>
+
+        <div class="nav-buttonss">
+            <a href="../index.html" class="register-btn">Cerrar sesión</a>
+        </div>
+    </nav>
+</header>
+
+<main class="chat-container">
+
+    <aside class="chat-sidebar">
+        <div class="chat-sidebar-header">
+            <h2>Mensajes</h2>
+            <button class="icon-btn" title="Nuevo mensaje"><i class='bx bx-edit'></i></button>
+        </div>
+
+        <div class="chat-search">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Buscar chat...">
+        </div>
+
+        <div class="chat-list">
+            <div class="chat-item active">
+                <div class="avatar-wrapper">
+                    <img src="../static/images/defaultProfile.png" alt="Soporte LabXP">
+                    <span class="status-online"></span>
+                </div>
+                <div class="chat-item-info">
+                    <div class="chat-item-top">
+                        <h4>Equipo LabXP</h4>
+                        <span class="time">10:42 AM</span>
+                    </div>
+                    <p class="preview">¡Hola Estefano! Tu postulación fue aceptada...</p>
+                </div>
+            </div>
+
+            <div class="chat-item unread">
+                <div class="avatar-wrapper">
+                    <img src="../static/images/defaultProfile.png" alt="Tech Corp">
+                </div>
+                <div class="chat-item-info">
+                    <div class="chat-item-top">
+                        <h4>Tech Corp Recruiters</h4>
+                        <span class="time">Ayer</span>
+                    </div>
+                    <p class="preview">¿Tendrás disponibilidad para una llamada mañana?</p>
+                </div>
+                <span class="unread-badge">2</span>
+            </div>
+
+            <div class="chat-item">
+                <div class="avatar-wrapper">
+                    <img src="../static/images/defaultProfile.png" alt="María Gómez">
+                </div>
+                <div class="chat-item-info">
+                    <div class="chat-item-top">
+                        <h4>María Gómez (Mentor)</h4>
+                        <span class="time">Mar 12</span>
+                    </div>
+                    <p class="preview">Revisé tu código, todo se ve excelente.</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <section class="chat-main">
+        <header class="chat-main-header">
+            <div class="chat-user-details">
+                <img src="../static/images/defaultProfile.png" alt="Equipo LabXP">
+                <div>
+                    <h3>Equipo LabXP</h3>
+                    <span class="status-text">En línea</span>
+                </div>
+            </div>
+            <div class="chat-header-actions">
+                <button class="icon-btn"><i class='bx bx-dots-vertical-rounded'></i></button>
+            </div>
+        </header>
+
+        <div class="chat-messages">
+            <div class="date-divider"><span>Hoy</span></div>
+
+            <div class="message incoming">
+                <div class="message-content">
+                    <p>¡Hola Estefano! Revisamos tu perfil y quedamos muy contentos con tus certificados.</p>
+                    <span class="message-time">10:40 AM</span>
+                </div>
+            </div>
+
+            <div class="message incoming">
+                <div class="message-content">
+                    <p>Tu postulación para la microexperiencia de Desarrollo Web fue aprobada. 🚀</p>
+                    <span class="message-time">10:41 AM</span>
+                </div>
+            </div>
+
+            <div class="message outgoing">
+                <div class="message-content">
+                    <p>¡Muchas gracias! Quedo atento a las indicaciones para empezar.</p>
+                    <span class="message-time">10:42 AM <i class='bx bx-check-double'></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <button class="icon-btn" title="Adjuntar archivo"><i class='bx bx-paperclip'></i></button>
+            <input type="text" placeholder="Escribe un mensaje...">
+            <button class="send-btn"><i class='bx bx-paper-plane'></i></button>
+        </div>
+    </section>
+
+</main>
+
+<script src="../static/js/mensajes.js"></script>
+</body>
+</html>

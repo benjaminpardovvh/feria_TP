@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabXP | Perfil</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS del lobby y los estilos del perfil -->
+    <link rel="stylesheet" href="../static/css/lobby.css">
+    <link rel="stylesheet" href="../static/css/perfil.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../static/images/logo.png" alt="LabXP">
+        </div>
+
+        <div class="search">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Buscar oportunidades...">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="lobby.html">Inicio</a></li>
+            <li><a href="comoFunciona.html">Cómo funciona</a></li>
+            <li><a href="empresas.html">Empresas</a></li>
+        </ul>
+
+        <div class="nav-buttonss">
+            <a href="../index.html" class="register-btn">Cerrar sesión</a>
+        </div>
+    </nav>
+</header>
+
+<main class="lobby-container">
+
+    <!-- SIDEBAR -->
+    <section class="lobby-sidebar">
+        <div class="lobby-profile">
+            <img src="../static/images/defaultProfile.png" alt="Perfil">
+            <h2>Estefano Poblete</h2>
+            <p>Desarrollador Full Stack</p>
+        </div>
+
+        <div class="lobby-features">
+            <div class="lobby-feature">
+                <i class='bx bx-award'></i>
+                <div>
+                    <h3>12 Certificados</h3>
+                    <p>Experiencias completadas.</p>
+                </div>
+            </div>
+
+            <div class="lobby-feature">
+                <i class='bx bx-briefcase'></i>
+                <div>
+                    <h3>5 Postulaciones</h3>
+                    <p>En proceso.</p>
+                </div>
+            </div>
+
+            <div class="lobby-feature">
+                <i class='bx bx-bookmark'></i>
+                <div>
+                    <h3>Guardados</h3>
+                    <p>Revisa tus oportunidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN PROFILE CONTENT -->
+    <section class="profile-main-card">
+        
+        <!-- Header del perfil -->
+        <div class="profile-header">
+            <div>
+                <h1>Información de Perfil</h1>
+                <p class="subtitle">Gestiona y actualiza tus datos personales y profesionales</p>
+            </div>
+            <button class="btn-edit-profile">
+                <i class='bx bx-edit-alt'></i> Editar Perfil
+            </button>
+        </div>
+
+        <!-- Progreso del perfil -->
+        <div class="profile-completion">
+            <div class="completion-info">
+                <span>Perfil completado al 85%</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Grid de información del perfil -->
+        <div class="profile-grid">
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="info-content">
+                    <span class="label">Nombre completo</span>
+                    <p class="value">Estefano Poblete</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class='bx bx-calendar'></i>
+                </div>
+                <div class="info-content">
+                    <span class="label">Edad</span>
+                    <p class="value">24 años</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class='bx bx-code-alt'></i>
+                </div>
+                <div class="info-content">
+                    <span class="label">Especialidad</span>
+                    <p class="value">Desarrollador Full Stack</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <div class="info-content">
+                    <span class="label">Correo Electrónico</span>
+                    <p class="value">estefano.poblete@ejemplo.com</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Biografía / Acerca de mí -->
+        <div class="profile-bio">
+            <h3><i class='bx bx-file'></i> Acerca de mí</h3>
+            <p>
+                Desarrollador Full Stack apasionado por la creación de soluciones digitales eficientes y escalables. 
+                Especializado en tecnologías web modernas, diseño de interfaces intuitivas y metodologías ágiles.
+            </p>
+        </div>
+
+        <!-- Habilidades / Skills -->
+        <div class="profile-skills">
+            <h3><i class='bx bx-layer'></i> Habilidades principales</h3>
+            <div class="skills-tags">
+                <span class="tag">HTML5 & CSS3</span>
+                <span class="tag">JavaScript (ES6+)</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Python</span>
+                <span class="tag">Git & GitHub</span>
+            </div>
+        </div>
+
+        <!-- Postulaciones -->
+        <div class="profile-applications">
+            <h3><i class='bx bx-briefcase'></i> Postulaciones Activas</h3>
+            <div class="applications-list">
+                
+                <div class="application-card">
+                    <div class="app-info">
+                        <h4>Desarrollador Web Front-End</h4>
+                        <span class="app-company">Tech Corp Chile</span>
+                        <span class="app-date"><i class='bx bx-time-five'></i> Postulado el 24/07/2026</span>
+                    </div>
+                    <span class="status-badge status-review">En revisión</span>
+                </div>
+
+                <div class="application-card">
+                    <div class="app-info">
+                        <h4>Microexperiencia Backend Node.js</h4>
+                        <span class="app-company">LabXP Inno</span>
+                        <span class="app-date"><i class='bx bx-time-five'></i> Postulado el 18/07/2026</span>
+                    </div>
+                    <span class="status-badge status-accepted">Aprobada</span>
+                </div>
+
+                <div class="application-card">
+                    <div class="app-info">
+                        <h4>Full Stack Junior Trainee</h4>
+                        <span class="app-company">DevStudio Latam</span>
+                        <span class="app-date"><i class='bx bx-time-five'></i> Postulado el 10/07/2026</span>
+                    </div>
+                    <span class="status-badge status-pending">Pendiente</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Botón flotante de Mensajes -->
+<a href="mensajes.html" class="floating-chat-btn" title="Mensajes">
+    <i class='bx bx-conversation'></i>
+    <span class="chat-badge">3</span>
+</a>
+
+</body>
+</html>
