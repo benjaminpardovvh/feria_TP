@@ -122,3 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const chatContainer = document.querySelector('.chat-container');
+    const chatItems = document.querySelectorAll('.chat-item');
+    const backBtn = document.getElementById('backToListBtn');
+
+    chatItems.forEach(item => {
+        item.addEventListener('click', () => {
+            chatItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            chatContainer.classList.add('active-chat');
+        });
+    });
+
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('active-chat');
+        });
+    }
+});
