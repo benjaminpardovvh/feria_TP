@@ -2,183 +2,114 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>LabXP | Iniciar sesión</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="static/css/style.css">
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 
 <body>
 
 <header>
-
     <nav class="navbar">
-
-<div class="logo">
-    <img src="../static/images/logo.png" alt="LabXP">
-</div>
-
+        <div class="logo">
+            <img src="../static/images/logo.png" alt="LabXP">
+        </div>
         <ul class="nav-links">
-
             <li><a href="pages/lobby.html">Inicio</a></li>
             <li><a href="pages/comoFunciona.html">Cómo funciona</a></li>
             <li><a href="pages/empresas.html">Empresas</a></li>
-
         </ul>
-
         <div class="login-navbar-buttons">
-
             <a href="#" class="login-navbar-link">Inicia sesión</a>
-
             <a href="pages/Register.html" class="login-navbar-register">
                 Regístrate
             </a>
-
         </div>
-
     </nav>
-
 </header>
 
 <main class="login-container">
-
     <section class="login-info">
-
         <h1>
-
             Conectamos talento
-
             <span>con oportunidades reales.</span>
-
         </h1>
-
         <p>
-
             La plataforma que ayuda a jóvenes sin experiencia
             a obtener sus primeras experiencias laborales
             con empresas inclusivas.
-
         </p>
-
         <div class="login-cards">
-
             <div class="login-card">
-
                 <i class='bx bx-briefcase'></i>
-
                 <div>
-
                     <h3>Para jóvenes</h3>
-
                     <p>Obtén experiencia certificada.</p>
-
                 </div>
-
             </div>
-
             <div class="login-card">
-
                 <i class='bx bx-buildings'></i>
-
                 <div>
-
                     <h3>Para empresas</h3>
-
                     <p>Encuentra talento motivado.</p>
-
                 </div>
-
             </div>
-
             <div class="login-card">
-
                 <i class='bx bx-shield-quarter'></i>
-
                 <div>
-
                     <h3>Inclusión laboral</h3>
-
                     <p>Espacios seguros y accesibles.</p>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <section class="login-form">
-
         <h2>Inicia sesión</h2>
-
         <p>
-
             ¿No tienes cuenta?
-
             <a href="pages/Register.html">Regístrate</a>
-
         </p>
-
         <form>
-
             <label>Correo electrónico</label>
-
             <div class="login-input">
-
                 <i class='bx bx-envelope'></i>
-
-                <input type="email" placeholder="correo@ejemplo.cl">
-
+                <input type="email" placeholder="correo@ejemplo.cl" required>
             </div>
 
             <label>Contraseña</label>
-
             <div class="login-input">
-
                 <i class='bx bx-lock-alt'></i>
+                <input type="password" placeholder="********" required>
+            </div>
 
-                <input type="password" placeholder="********">
-
+            <!-- Nuevo campo para subir el currículum -->
+            <label>Sube tu currículum (PDF o Word)</label>
+            <div class="login-input">
+                <i class='bx bx-file'></i>
+                <input type="file" name="curriculum" accept=".pdf,.doc,.docx">
             </div>
 
             <div class="login-row">
-
                 <label class="login-remember">
-
                     <input type="checkbox">
-
                     Recordarme
-
                 </label>
-
                 <a href="#">¿Olvidaste tu contraseña?</a>
-
             </div>
 
-            <button class="login-button">
-
+            <!-- Botón convertido en enlace para redirigir al lobby -->
+            <a href="pages/lobby.html" class="login-button" style="display: block; text-align: center; text-decoration: none; line-height: normal;">
                 Iniciar sesión
-
-            </button>
-
+            </a>
         </form>
-
     </section>
-
 </main>
 
 </body>
-
 </html>

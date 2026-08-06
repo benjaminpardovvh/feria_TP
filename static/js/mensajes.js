@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const conversations = {
         "Equipo LabXP": [
-            { type: 'incoming', text: '¡Hola Estefano! Revisamos tu perfil y quedamos muy contentos con tus certificados.', time: '10:40 AM' },
+            { type: 'incoming', text: '¡Hola Trabajador! Revisamos tu perfil y quedamos muy contentos con tus certificados.', time: '10:40 AM' },
             { type: 'incoming', text: 'Tu postulación para la microexperiencia de Desarrollo Web fue aprobada. 🚀', time: '10:41 AM' },
             { type: 'outgoing', text: '¡Muchas gracias! Quedo atento a las indicaciones para empezar.', time: '10:42 AM' }
         ],
         "Tech Corp Recruiters": [
-            { type: 'incoming', text: 'Hola Estefano, vimos tu trabajo en la plataforma.', time: 'Ayer' },
+            { type: 'incoming', text: 'Hola Trabajador, vimos tu trabajo en la plataforma.', time: 'Ayer' },
             { type: 'incoming', text: '¿Tendrás disponibilidad para una llamada mañana?', time: 'Ayer' }
         ],
         "María Gómez (Mentor)": [

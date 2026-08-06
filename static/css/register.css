@@ -233,6 +233,23 @@ header{
 }
 
 
+.login-button{
+width:100%;
+padding:18px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:12px;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-button:hover{
+background:#1d4ed8;
+}
+
 /* RESPONSIVE */
 
 @media(max-width:1000px){
