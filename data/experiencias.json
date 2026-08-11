@@ -1,0 +1,28 @@
+[
+  {
+    "id": 101,
+    "titulo": "Digitalización de documentos",
+    "empresa": "Café Santiago",
+    "verificada": true,
+    "ubicacion": "Santiago Centro",
+    "modalidad": "Presencial",
+    "duracion_horas": 4,
+    "pago": 25000,
+    "habilidades": ["Organización", "Herramientas digitales", "Atención al detalle", "Responsabilidad"],
+    "horario_tipo": "Mañana",
+    "accesibilidad": ["bajo_ruido", "instrucciones_escritas", "estacion_sentada"]
+  },
+  {
+    "id": 102,
+    "titulo": "Gestión de redes sociales",
+    "empresa": "Mercado Local",
+    "verificada": true,
+    "ubicacion": "Remoto",
+    "modalidad": "Remoto",
+    "duracion_horas": 4,
+    "pago": 28000,
+    "habilidades": ["Herramientas digitales", "Comunicación escrita"],
+    "horario_tipo": "Flexible",
+    "accesibilidad": ["instrucciones_escritas"]
+  }
+]

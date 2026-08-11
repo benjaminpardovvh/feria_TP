@@ -4,112 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LabXP | Iniciar sesión</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>JOBXP | Tu primera experiencia laboral</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/evaluaciones.js"></script>
 </head>
 
 <body>
-
-<header>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="../static/images/logo.png" alt="LabXP">
-        </div>
-        <ul class="nav-links">
-            <li><a href="pages/lobby.html">Inicio</a></li>
-            <li><a href="pages/comoFunciona.html">Cómo funciona</a></li>
-            <li><a href="pages/empresas.html">Empresas</a></li>
-        </ul>
-        <div class="login-navbar-buttons">
-            <a href="#" class="login-navbar-link">Inicia sesión</a>
-            <a href="pages/Register.html" class="login-navbar-register">
-                Regístrate
-            </a>
+    <!-- Navbar Superior (Desktop) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top d-none d-lg-flex"
+        aria-label="Navegación principal">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand labxp-brand" href="#/home">JOB<span>XP</span></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item"><a class="nav-link" href="#/home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#/explorar">Explorar experiencias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#/como-funciona">Cómo funciona</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#/inclusion">Inclusión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#/empresa">Para empresas</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#/login" class="btn btn-outline-primary rounded-pill px-4 text-decoration-none">Iniciar
+                        sesión</a>
+                    <a href="#/registro" class="btn btn-primary rounded-pill px-4 text-decoration-none">Registrarme</a>
+                    <button onclick="UI.logout()" class="btn btn-light rounded-pill px-3 text-secondary border"><i
+                            class="bi bi-box-arrow-right"></i> Salir</button>
+                </div>
+            </div>
         </div>
     </nav>
-</header>
 
-<main class="login-container">
-    <section class="login-info">
-        <h1>
-            Conectamos talento
-            <span>con oportunidades reales.</span>
-        </h1>
-        <p>
-            La plataforma que ayuda a jóvenes sin experiencia
-            a obtener sus primeras experiencias laborales
-            con empresas inclusivas.
-        </p>
-        <div class="login-cards">
-            <div class="login-card">
-                <i class='bx bx-briefcase'></i>
-                <div>
-                    <h3>Para jóvenes</h3>
-                    <p>Obtén experiencia certificada.</p>
-                </div>
-            </div>
-            <div class="login-card">
-                <i class='bx bx-buildings'></i>
-                <div>
-                    <h3>Para empresas</h3>
-                    <p>Encuentra talento motivado.</p>
-                </div>
-            </div>
-            <div class="login-card">
-                <i class='bx bx-shield-quarter'></i>
-                <div>
-                    <h3>Inclusión laboral</h3>
-                    <p>Espacios seguros y accesibles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Header Mobile -->
+    <header
+        class="d-lg-none bg-white border-bottom fixed-top px-3 py-2 d-flex justify-content-between align-items-center">
+        <a href="#/home" class="labxp-brand mobile-brand">JOB<span>XP</span></a>
+        <div class="d-flex align-items-center gap-2"><a href="#/login" class="small fw-semibold text-dark text-decoration-none">Entrar</a><a href="#/registro" class="btn btn-primary btn-sm rounded-pill px-3">Crear cuenta</a></div>
+    </header>
 
-    <section class="login-form">
-        <h2>Inicia sesión</h2>
-        <p>
-            ¿No tienes cuenta?
-            <a href="pages/Register.html">Regístrate</a>
-        </p>
-        <form>
-            <label>Correo electrónico</label>
-            <div class="login-input">
-                <i class='bx bx-envelope'></i>
-                <input type="email" placeholder="correo@ejemplo.cl" required>
-            </div>
+    <!-- Contenedor Principal (Vistas dinámicas) -->
+    <main id="app-content" class="container-fluid" style="margin-top: 70px; margin-bottom: 80px;"></main>
 
-            <label>Contraseña</label>
-            <div class="login-input">
-                <i class='bx bx-lock-alt'></i>
-                <input type="password" placeholder="********" required>
-            </div>
+    <!-- Navegación Inferior (Mobile) -->
+    <nav class="mobile-nav d-lg-none fixed-bottom bg-white border-top d-flex justify-content-around py-2">
+        <a href="#/home" class="text-center text-decoration-none text-secondary active-nav">
+            <i class="bi bi-house-door fs-4 d-block"></i>
+            <span class="small">Inicio</span>
+        </a>
+        <a href="#/explorar" class="text-center text-decoration-none text-secondary">
+            <i class="bi bi-search fs-4 d-block"></i>
+            <span class="small">Explorar</span>
+        </a>
+        <a href="#/pasaporte" class="text-center text-decoration-none text-secondary">
+            <i class="bi bi-award fs-4 d-block"></i>
+            <span class="small">Pasaporte</span>
+        </a>
+        <a href="#/perfil" class="text-center text-decoration-none text-secondary">
+            <i class="bi bi-person fs-4 d-block"></i>
+            <span class="small">Perfil</span>
+        </a>
+    </nav>
 
-            <!-- Nuevo campo para subir el currículum -->
-            <label>Sube tu currículum (PDF o Word)</label>
-            <div class="login-input">
-                <i class='bx bx-file'></i>
-                <input type="file" name="curriculum" accept=".pdf,.doc,.docx">
-            </div>
-
-            <div class="login-row">
-                <label class="login-remember">
-                    <input type="checkbox">
-                    Recordarme
-                </label>
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </div>
-
-            <!-- Botón convertido en enlace para redirigir al lobby -->
-            <a href="pages/lobby.html" class="login-button" style="display: block; text-align: center; text-decoration: none; line-height: normal;">
-                Iniciar sesión
-            </a>
-        </form>
-    </section>
-</main>
-
+    <!-- Scripts (Orden de dependencias) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/match.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/evaluaciones.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>
