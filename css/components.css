@@ -1,6 +1,0 @@
-/* Oculta la sección de empresa en la barra superior */
-.header-empresa, 
-.panel-empresa, 
-[data-role="empresa"] {
-  display: none !important;
-}

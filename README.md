@@ -1,57 +1,39 @@
-# JOBXP - Plataforma de Microexperiencias Laborales Inclusivas
+# JOBXP — Plataforma de Microexperiencias Laborales Inclusivas
 
-## Descripción (ODS 8)
-**JOBXP** es un MVP de plataforma tecnológica diseñada para conectar a jóvenes mayores de 18 años sin experiencia laboral con organizaciones que ofrecen microexperiencias (certificadas y adaptadas). Transforma la falta de experiencia en historial comprobable.
+Prototipo web académico hecho con **HTML, CSS, Bootstrap y JavaScript puro**. Está inspirado en el documento del proyecto y en los mockups entregados.
 
-## Funcionalidades
-* **Match Inclusivo:** Algoritmo que cruza necesidades de accesibilidad (TEA, movilidad, etc.) con los requisitos del entorno laboral.
-* **Pasaporte Laboral:** Registro inmutable de experiencias y certificaciones obtenidas.
-* **Reglas Anti-abuso:** Limitación de jóvenes por empresa (según tamaño) mediante validaciones frontend.
-* **Asistencia Demo (IoT):** Simulación de marcaje de entrada/salida mediante lectura QR.
+## Funciones implementadas
+- Registro de cuentas de joven y empresa.
+- Inicio de sesión con **solo correo y contraseña**.
+- Cerrar sesión.
+- Perfil joven con nombre completo, fecha de nacimiento, zona, habilidades, CV y preferencias de accesibilidad.
+- Recomendaciones por zona y match de accesibilidad.
+- Exploración y filtros por zona, modalidad, sueldo negociable/no negociable y accesibilidad.
+- Detalle de experiencia: sueldo, horario, duración, habilidades, tipo de experiencia y etiquetas inclusivas.
+- Mensaje explícito cuando el sueldo no es negociable.
+- Empresas relacionadas y sus experiencias disponibles.
+- Panel de empresa para publicar microexperiencias.
+- Checklist de accesibilidad y teletrabajo.
+- Reglas antiabuso: límite de jóvenes por tamaño y máximo del 20% de dotación; bloqueo de ofertas duplicadas.
+- Evaluación bidireccional con estrellas.
+- Denuncias.
+- Simulación de asistencia mediante QR.
+- Pasaporte laboral.
+- Navbar responsive con botón hamburguesa en pantallas pequeñas.
 
-## Tecnologías Utilizadas
-* HTML5 / CSS3 / Bootstrap 5
-* Vanilla JavaScript (ES6+)
-* Hash Routing (Single Page Application)
-* LocalStorage y JSON local para persistencia (Sin backend).
+## Datos de prueba
+**Joven:** `camila@jobxp.cl` / `123456`  
+**Empresa:** `empresa@jobxp.cl` / `123456`
 
-## Instalación y Despliegue en GitHub Pages
-1. Clona este repositorio.
-2. No requiere servidor Node, NPM, ni bases de datos.
-3. Activa **GitHub Pages** en la configuración de tu repositorio apuntando a la rama `main` (raíz).
-4. Demo disponible en: `https://[TU-USUARIO].github.io/[TU-REPO]/`
+## Importante
+Este es un prototipo frontend. La autenticación, CV y datos se guardan en `localStorage`; no hay backend ni Firebase conectado todavía. La verificación biométrica, QR/IoT y geolocalización son simulaciones.
 
-## Aclaración sobre Funcionalidades Simuladas
-Este proyecto corresponde a un prototipo frontend demostrativo. Las siguientes funciones están simuladas:
-* **Verificación biométrica:** Demo visual, no procesa datos reales.
-* **IoT (QR):** Simula el registro mediante clicks guiados.
-* **Geolocalización:** Utiliza ubicación fallback demo si el navegador la rechaza.
-* **Autenticación y Backend:** Todo el estado se mantiene en el navegador (LocalStorage).Plataforma de Microexperiencias Laborales Inclusivas
+El contenido funcional se basa en el documento del proyecto: público joven mayor de 18 años, inclusión asistida, match de accesibilidad, pasaporte de experiencia, evaluación mutua, denuncias y reglas antiabuso.
 
-## Descripción (ODS 8)
-**JOBXP** es un MVP de plataforma tecnológica diseñada para conectar a jóvenes mayores de 18 años sin experiencia laboral con organizaciones que ofrecen microexperiencias (certificadas y adaptadas). Transforma la falta de experiencia en historial comprobable.
-
-## Funcionalidades
-* **Match Inclusivo:** Algoritmo que cruza necesidades de accesibilidad (TEA, movilidad, etc.) con los requisitos del entorno laboral.
-* **Pasaporte Laboral:** Registro inmutable de experiencias y certificaciones obtenidas.
-* **Reglas Anti-abuso:** Limitación de jóvenes por empresa (según tamaño) mediante validaciones frontend.
-* **Asistencia Demo (IoT):** Simulación de marcaje de entrada/salida mediante lectura QR.
-
-## Tecnologías Utilizadas
-* HTML5 / CSS3 / Bootstrap 5
-* Vanilla JavaScript (ES6+)
-* Hash Routing (Single Page Application)
-* LocalStorage y JSON local para persistencia (Sin backend).
-
-## Instalación y Despliegue en GitHub Pages
-1. Clona este repositorio.
-2. No requiere servidor Node, NPM, ni bases de datos.
-3. Activa **GitHub Pages** en la configuración de tu repositorio apuntando a la rama `main` (raíz).
-4. Demo disponible en: `https://[TU-USUARIO].github.io/[TU-REPO]/`
-
-## Aclaración sobre Funcionalidades Simuladas
-Este proyecto corresponde a un prototipo frontend demostrativo. Las siguientes funciones están simuladas:
-* **Verificación biométrica:** Demo visual, no procesa datos reales.
-* **IoT (QR):** Simula el registro mediante clicks guiados.
-* **Geolocalización:** Utiliza ubicación fallback demo si el navegador la rechaza.
-* **Autenticación y Backend:** Todo el estado se mantiene en el navegador (LocalStorage).
+## Actualización de funcionalidades
+- Mis postulaciones: el joven puede revisar estado Enviada/Aceptada/Rechazada.
+- Postulaciones recibidas: la empresa puede aceptar o rechazar postulantes y revisar CV, habilidades y preferencias/condiciones indicadas.
+- Mensajería bidireccional por cada postulación.
+- Perfil inclusivo ampliado: TDAH, TEA/espectro autista, Tourette, ansiedad social, movilidad reducida, discapacidad física, sordera/hipoacusia y baja visión/ceguera.
+- Campo libre para indicar otra condición, enfermedad o necesidad que no aparezca en la lista.
+- Las nuevas postulaciones y cambios de estado generan mensajes automáticos dentro de la conversación.
