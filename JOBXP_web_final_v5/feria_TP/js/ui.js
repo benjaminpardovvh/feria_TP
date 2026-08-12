@@ -1,10 +1,11 @@
 // js/ui.js
 
 const UI = {
-  renderHome: function () {
-    const content = document.getElementById("app-content");
 
-    content.innerHTML = `
+    renderHome: function () {
+        const content = document.getElementById('app-content');
+
+        content.innerHTML = `
             <div class="labxp-home">
 
                 <section class="labxp-hero">
@@ -492,15 +493,15 @@ const UI = {
 
             </div>
         `;
-  },
+    },
 
-  // ==========================================
-  // 1. SISTEMA DE AUTENTICACIÓN (OPERATIVO)
-  // ==========================================
+    // ==========================================
+    // 1. SISTEMA DE AUTENTICACIÓN (OPERATIVO)
+    // ==========================================
 
-  renderLogin: function () {
-    const content = document.getElementById("app-content");
-    content.innerHTML = `
+    renderLogin: function () {
+        const content = document.getElementById('app-content');
+        content.innerHTML = `
             <div class="container py-5 d-flex justify-content-center">
                 <div class="jxp-card p-4 p-md-5 w-100" style="max-width: 450px;">
                     <div class="text-center mb-4">
@@ -528,29 +529,27 @@ const UI = {
                 </div>
             </div>
         `;
-  },
+    },
 
-  handleLogin: function (e) {
-    e.preventDefault();
-    const role = document.getElementById("loginRole").value;
-    const users = StorageDB.get("jxp_users") || [];
+    handleLogin: function (e) {
+        e.preventDefault();
+        const role = document.getElementById('loginRole').value;
+        const users = StorageDB.get('jxp_users') || [];
 
-    // Buscar el primer usuario que coincida con el rol (simulación)
-    const user = users.find((u) => u.rol === role);
+        // Buscar el primer usuario que coincida con el rol (simulación)
+        const user = users.find(u => u.rol === role);
 
-    if (user) {
-      StorageDB.set("jxp_current_user", user);
-      window.location.hash = role === "joven" ? "#/inicio" : "#/empresa";
-    } else {
-      alert(
-        "Error: No se encontró un usuario demo para este rol. Por favor, regístrate primero.",
-      );
-    }
-  },
+        if (user) {
+            StorageDB.set('jxp_current_user', user);
+            window.location.hash = role === 'joven' ? '#/inicio' : '#/empresa';
+        } else {
+            alert("Error: No se encontró un usuario demo para este rol. Por favor, regístrate primero.");
+        }
+    },
 
-  renderRegistro: function () {
-    const content = document.getElementById("app-content");
-    content.innerHTML = `
+    renderRegistro: function () {
+        const content = document.getElementById('app-content');
+        content.innerHTML = `
             <div class="container py-5 d-flex justify-content-center">
                 <div class="jxp-card p-4 p-md-5 w-100" style="max-width: 500px;">
                     <div class="text-center mb-4">
@@ -593,69 +592,65 @@ const UI = {
                 </div>
             </div>
         `;
-  },
+    },
 
-  handleRegistro: function (e) {
-    e.preventDefault();
-    const role = document.querySelector('input[name="regRole"]:checked').value;
-    const nombreIngresado = document.getElementById("regName").value;
-    const ubicacionIngresada = document.getElementById("regLocation").value;
+    handleRegistro: function (e) {
+        e.preventDefault();
+        const role = document.querySelector('input[name="regRole"]:checked').value;
+        const nombreIngresado = document.getElementById('regName').value;
+        const ubicacionIngresada = document.getElementById('regLocation').value;
 
-    let users = StorageDB.get("jxp_users") || [];
+        let users = StorageDB.get('jxp_users') || [];
 
-    // Crear un objeto JSON base según el rol
-    const newUser = {
-      id: Date.now(),
-      nombre: nombreIngresado,
-      rol: role,
-      ubicacion: ubicacionIngresada,
-      // Datos por defecto para que la app no se rompa al explorar
-      habilidades:
-        role === "joven" ? ["Organización", "Herramientas digitales"] : [],
-      disponibilidad: role === "joven" ? ["Mañana", "Tarde"] : [],
-      modalidad_preferida: "Presencial",
-      accesibilidad: [],
-      estadisticas: { experiencias: 0, horas: 0, promedio: 0 },
-    };
+        // Crear un objeto JSON base según el rol
+        const newUser = {
+            id: Date.now(),
+            nombre: nombreIngresado,
+            rol: role,
+            ubicacion: ubicacionIngresada,
+            // Datos por defecto para que la app no se rompa al explorar
+            habilidades: role === 'joven' ? ["Organización", "Herramientas digitales"] : [],
+            disponibilidad: role === 'joven' ? ["Mañana", "Tarde"] : [],
+            modalidad_preferida: "Presencial",
+            accesibilidad: [],
+            estadisticas: { experiencias: 0, horas: 0, promedio: 0 }
+        };
 
-    users.push(newUser);
-    StorageDB.set("jxp_users", users);
-    StorageDB.set("jxp_current_user", newUser); // Autologuear
+        users.push(newUser);
+        StorageDB.set('jxp_users', users);
+        StorageDB.set('jxp_current_user', newUser); // Autologuear
 
-    alert("¡Registro exitoso! Tus datos se guardaron en LocalStorage.");
-    window.location.hash = role === "joven" ? "#/inicio" : "#/empresa";
-  },
-  logout: function () {
-    // Limpiamos el usuario actual del LocalStorage
-    StorageDB.set("jxp_current_user", null);
-    // Redirigimos a la pantalla de Login
-    window.location.hash = "#/login";
-  },
-  // ==========================================
-  // 2. FLUJO DEL JOVEN (DASHBOARD Y EXPLORAR)
-  // ==========================================
+        alert("¡Registro exitoso! Tus datos se guardaron en LocalStorage.");
+        window.location.hash = role === 'joven' ? '#/inicio' : '#/empresa';
+    },
+    logout: function () {
+        // Limpiamos el usuario actual del LocalStorage
+        StorageDB.set('jxp_current_user', null);
+        // Redirigimos a la pantalla de Login
+        window.location.hash = '#/login';
+    },
+    // ==========================================
+    // 2. FLUJO DEL JOVEN (DASHBOARD Y EXPLORAR)
+    // ==========================================
 
-  renderDashboardJoven: function () {
-    const user = StorageDB.get("jxp_current_user");
-    if (!user) {
-      window.location.hash = "#/login";
-      return;
-    }
+    renderDashboardJoven: function () {
+        const user = StorageDB.get('jxp_current_user');
+        if (!user) { window.location.hash = '#/login'; return; }
 
-    const experiencias = StorageDB.get("jxp_experiences") || [];
-    const content = document.getElementById("app-content");
+        const experiencias = StorageDB.get('jxp_experiences') || [];
+        const content = document.getElementById('app-content');
 
-    // Tomamos la primera experiencia como destacada y calculamos su Match
-    const expDestacada = experiencias[0];
-    let html = "";
+        // Tomamos la primera experiencia como destacada y calculamos su Match
+        const expDestacada = experiencias[0];
+        let html = '';
 
-    if (expDestacada) {
-      const matchResult = MatchEngine.calculate(user, expDestacada);
-      html = `
+        if (expDestacada) {
+            const matchResult = MatchEngine.calculate(user, expDestacada);
+            html = `
                 <div class="container py-4">
                     <div class="row mb-4">
                         <div class="col-12">
-                            <h2 class="fw-bold">¡Hola, ${user.nombre.split(" ")[0]}! 👋</h2>
+                            <h2 class="fw-bold">¡Hola, ${user.nombre.split(' ')[0]}! 👋</h2>
                             <p class="text-secondary">Estas son experiencias recomendadas para ti.</p>
                         </div>
                     </div>
@@ -669,7 +664,7 @@ const UI = {
                                         <h4 class="fw-bold mb-1">${expDestacada.titulo}</h4>
                                         <p class="text-secondary mb-2">
                                             <i class="bi bi-shop"></i> ${expDestacada.empresa} 
-                                            ${expDestacada.verificada ? '<i class="bi bi-patch-check-fill text-primary"></i>' : ""}
+                                            ${expDestacada.verificada ? '<i class="bi bi-patch-check-fill text-primary"></i>' : ''}
                                         </p>
                                         <div class="d-flex gap-3 text-secondary small mb-3">
                                             <span><i class="bi bi-clock"></i> ${expDestacada.duracion_horas} horas</span>
@@ -685,16 +680,13 @@ const UI = {
 
                                 <div class="mb-4">
                                     <span class="d-block text-secondary small">Pago</span>
-                                    <span class="fs-4 fw-bold text-success">$${expDestacada.pago.toLocaleString("es-CL")}</span>
+                                    <span class="fs-4 fw-bold text-success">$${expDestacada.pago.toLocaleString('es-CL')}</span>
                                 </div>
 
                                 <div class="d-flex flex-wrap gap-2 mb-4">
-                                    ${expDestacada.accesibilidad
-                                      .map(
-                                        (acc) =>
-                                          `<span class="badge-accessibility"><i class="bi bi-check-circle text-success"></i> ${acc.replace("_", " ")}</span>`,
-                                      )
-                                      .join("")}
+                                    ${expDestacada.accesibilidad.map(acc =>
+                `<span class="badge-accessibility"><i class="bi bi-check-circle text-success"></i> ${acc.replace('_', ' ')}</span>`
+            ).join('')}
                                 </div>
 
                                 <a href="#/experiencia/${expDestacada.id}" class="btn btn-primary w-100 py-2 fw-medium">Ver experiencia</a>
@@ -724,23 +716,20 @@ const UI = {
                     </div>
                 </div>
             `;
-    } else {
-      html = `<div class="container py-5 text-center"><h4>No hay experiencias disponibles en este momento.</h4></div>`;
-    }
-    content.innerHTML = html;
-  },
+        } else {
+            html = `<div class="container py-5 text-center"><h4>No hay experiencias disponibles en este momento.</h4></div>`;
+        }
+        content.innerHTML = html;
+    },
 
-  renderExplorar: function () {
-    const user = StorageDB.get("jxp_current_user");
-    if (!user) {
-      window.location.hash = "#/login";
-      return;
-    }
+    renderExplorar: function () {
+        const user = StorageDB.get('jxp_current_user');
+        if (!user) { window.location.hash = '#/login'; return; }
 
-    const experiencias = StorageDB.get("jxp_experiences") || [];
-    const content = document.getElementById("app-content");
+        const experiencias = StorageDB.get('jxp_experiences') || [];
+        const content = document.getElementById('app-content');
 
-    let html = `
+        let html = `
             <div class="container py-4">
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-8">
@@ -754,9 +743,9 @@ const UI = {
                 <div class="row g-4">
         `;
 
-    experiencias.forEach((exp) => {
-      const match = MatchEngine.calculate(user, exp);
-      html += `
+        experiencias.forEach(exp => {
+            const match = MatchEngine.calculate(user, exp);
+            html += `
                 <div class="col-md-6 col-lg-4">
                     <div class="jxp-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-start mb-3">
@@ -774,37 +763,34 @@ const UI = {
                         </div>
 
                         <div class="mt-auto">
-                            <p class="text-success fw-bold fs-5 mb-3">$${exp.pago.toLocaleString("es-CL")}</p>
+                            <p class="text-success fw-bold fs-5 mb-3">$${exp.pago.toLocaleString('es-CL')}</p>
                             <a href="#/experiencia/${exp.id}" class="btn btn-outline-primary w-100 fw-medium">Ver experiencia</a>
                         </div>
                     </div>
                 </div>
             `;
-    });
+        });
 
-    html += `</div></div>`;
-    content.innerHTML = html;
-  },
+        html += `</div></div>`;
+        content.innerHTML = html;
+    },
 
-  renderDetalleExperiencia: function (id) {
-    const user = StorageDB.get("jxp_current_user");
-    if (!user) {
-      window.location.hash = "#/login";
-      return;
-    }
+    renderDetalleExperiencia: function (id) {
+        const user = StorageDB.get('jxp_current_user');
+        if (!user) { window.location.hash = '#/login'; return; }
 
-    const experiencias = StorageDB.get("jxp_experiences") || [];
-    const exp = experiencias.find((e) => e.id == id);
-    const content = document.getElementById("app-content");
+        const experiencias = StorageDB.get('jxp_experiences') || [];
+        const exp = experiencias.find(e => e.id == id);
+        const content = document.getElementById('app-content');
 
-    if (!exp) {
-      this.render404();
-      return;
-    }
+        if (!exp) {
+            this.render404();
+            return;
+        }
 
-    const match = MatchEngine.calculate(user, exp);
+        const match = MatchEngine.calculate(user, exp);
 
-    content.innerHTML = `
+        content.innerHTML = `
             <div class="container py-4">
                 <a href="#/explorar" class="text-decoration-none text-secondary mb-4 d-inline-block">
                     <i class="bi bi-arrow-left"></i> Volver a explorar
@@ -827,34 +813,26 @@ const UI = {
 
                             <h5 class="fw-bold mt-5 mb-3">Accesibilidad del entorno</h5>
                             <div class="d-flex flex-column gap-2 mb-4">
-                                ${exp.accesibilidad
-                                  .map(
-                                    (acc) => `
+                                ${exp.accesibilidad.map(acc => `
                                     <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-3 border">
                                         <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                        <span class="fw-medium text-capitalize">${acc.replace("_", " ")} garantizado</span>
+                                        <span class="fw-medium text-capitalize">${acc.replace('_', ' ')} garantizado</span>
                                     </div>
-                                `,
-                                  )
-                                  .join("")}
+                                `).join('')}
                             </div>
 
                             <h5 class="fw-bold mt-5 mb-3">Habilidades que desarrollarás</h5>
                             <div class="d-flex flex-wrap gap-2">
-                                ${exp.habilidades
-                                  .map(
-                                    (hab) => `
+                                ${exp.habilidades.map(hab => `
                                     <span class="badge bg-primary bg-opacity-10 text-primary border border-primary px-3 py-2 rounded-pill">${hab}</span>
-                                `,
-                                  )
-                                  .join("")}
+                                `).join('')}
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-lg-4">
                         <div class="jxp-card p-4 sticky-top" style="top: 100px;">
-                            <h4 class="text-success fw-bold mb-1">$${exp.pago.toLocaleString("es-CL")}</h4>
+                            <h4 class="text-success fw-bold mb-1">$${exp.pago.toLocaleString('es-CL')}</h4>
                             <p class="text-secondary small mb-4">Pago por experiencia</p>
                             
                             <ul class="list-unstyled mb-4 text-secondary">
@@ -870,18 +848,15 @@ const UI = {
                 </div>
             </div>
         `;
-  },
+    },
 
-  renderPasaporte: function () {
-    const user = StorageDB.get("jxp_current_user");
-    if (!user) {
-      window.location.hash = "#/login";
-      return;
-    }
+    renderPasaporte: function () {
+        const user = StorageDB.get('jxp_current_user');
+        if (!user) { window.location.hash = '#/login'; return; }
 
-    const content = document.getElementById("app-content");
+        const content = document.getElementById('app-content');
 
-    content.innerHTML = `
+        content.innerHTML = `
             <div class="container py-4">
                 <div class="jxp-card p-4 p-md-5 bg-primary text-white mb-5 position-relative overflow-hidden">
                     <div class="position-relative z-index-1">
@@ -921,57 +896,49 @@ const UI = {
                 </div>
             </div>
         `;
-  },
+    },
 
-  postular: function (id) {
-    alert(
-      "¡Excelente! 🎉\nTu postulación fue enviada correctamente. El sistema la registrará en tu perfil.",
-    );
-    window.location.hash = "#/inicio";
-  },
+    postular: function (id) {
+        alert("¡Excelente! 🎉\nTu postulación fue enviada correctamente. El sistema la registrará en tu perfil.");
+        window.location.hash = '#/inicio';
+    },
 
-  // ==========================================
-  // 3. ZONAS DE DESARROLLO ESTUDIANTIL
-  // ==========================================
+    // ==========================================
+    // 3. ZONAS DE DESARROLLO ESTUDIANTIL
+    // ==========================================
 
-  renderPlaceholder: function (param, currentHash) {
-    const content = document.getElementById("app-content");
+    renderPlaceholder: function (param, currentHash) {
+        const content = document.getElementById('app-content');
 
-    const retos = {
-      "#/perfil": {
-        titulo: "Mi Perfil & Preferencias",
-        instruccion:
-          'Debes construir el formulario donde el joven pueda editar sus habilidades y marcar casillas (checkbox) de accesibilidad (ej: "Bajo ruido"). Luego, guardar los cambios en el LocalStorage.',
-      },
-      "#/empresa": {
-        titulo: "Dashboard de Empresa",
-        instruccion:
-          "Debes diseñar el panel de administración. Aquí la empresa debe ver cuántas experiencias activas tiene, cuántos jóvenes han postulado y su calificación promedio.",
-      },
-      "#/empresa/publicar": {
-        titulo: "Publicar Microexperiencia",
-        instruccion:
-          "Debes crear el formulario para publicar ofertas. IMPORTANTE: Aquí debes programar en JavaScript las reglas anti-abuso (ej: Si es microempresa, bloquear si ya tiene 1 joven activo).",
-      },
-      "#/asistencia": {
-        titulo: "Simulador IoT (Código QR)",
-        instruccion:
-          'Debes crear una vista con la imagen de un código QR. Al hacer clic en un botón "Simular Escaneo", usa JS para registrar la hora de entrada/salida y guárdalo en LocalStorage.',
-      },
-      "#/evaluaciones": {
-        titulo: "Sistema de Evaluación",
-        instruccion:
-          "Diseña el formulario para calificar a la empresa o al joven con estrellas, enviando esta data al LocalStorage para actualizar el promedio.",
-      },
-    };
+        const retos = {
+            '#/perfil': {
+                titulo: 'Mi Perfil & Preferencias',
+                instruccion: 'Debes construir el formulario donde el joven pueda editar sus habilidades y marcar casillas (checkbox) de accesibilidad (ej: "Bajo ruido"). Luego, guardar los cambios en el LocalStorage.'
+            },
+            '#/empresa': {
+                titulo: 'Dashboard de Empresa',
+                instruccion: 'Debes diseñar el panel de administración. Aquí la empresa debe ver cuántas experiencias activas tiene, cuántos jóvenes han postulado y su calificación promedio.'
+            },
+            '#/empresa/publicar': {
+                titulo: 'Publicar Microexperiencia',
+                instruccion: 'Debes crear el formulario para publicar ofertas. IMPORTANTE: Aquí debes programar en JavaScript las reglas anti-abuso (ej: Si es microempresa, bloquear si ya tiene 1 joven activo).'
+            },
+            '#/asistencia': {
+                titulo: 'Simulador IoT (Código QR)',
+                instruccion: 'Debes crear una vista con la imagen de un código QR. Al hacer clic en un botón "Simular Escaneo", usa JS para registrar la hora de entrada/salida y guárdalo en LocalStorage.'
+            },
+            '#/evaluaciones': {
+                titulo: 'Sistema de Evaluación',
+                instruccion: 'Diseña el formulario para calificar a la empresa o al joven con estrellas, enviando esta data al LocalStorage para actualizar el promedio.'
+            }
+        };
 
-    const retoActual = retos[currentHash] || {
-      titulo: "Módulo en Desarrollo",
-      instruccion:
-        "Este módulo está pendiente de implementación. Revisa los requerimientos del proyecto.",
-    };
+        const retoActual = retos[currentHash] || {
+            titulo: 'Módulo en Desarrollo',
+            instruccion: 'Este módulo está pendiente de implementación. Revisa los requerimientos del proyecto.'
+        };
 
-    content.innerHTML = `
+        content.innerHTML = `
             <div class="container py-5">
                 <div class="row justify-content-center">
                     <div class="col-md-8 text-center">
@@ -994,10 +961,10 @@ const UI = {
                 </div>
             </div>
         `;
-  },
+    },
 
-  render404: function () {
-    document.getElementById("app-content").innerHTML = `
+    render404: function () {
+        document.getElementById('app-content').innerHTML = `
             <div class="container text-center py-5">
                 <i class="bi bi-emoji-frown fs-1 text-secondary mb-3 d-block"></i>
                 <h2 class="fw-bold">Página no encontrada</h2>
@@ -1005,12 +972,12 @@ const UI = {
                 <a href="javascript:history.back()" class="btn btn-primary mt-3 px-4">Regresar</a>
             </div>
         `;
-  },
-  // 👇 NUEVO CÓDIGO
-  renderAsistencia: function () {
-    const appContent = document.querySelector("#app-content");
+    }
+     // 👇 NUEVO CÓDIGO
+    renderAsistencia: function () {
+        const appContent = document.querySelector("#app-content");
 
-    appContent.innerHTML = `
+        appContent.innerHTML = `
             <div class="container py-4">
                 <div class="jxp-card text-center mx-auto" 
                     style="max-width:380px;">
@@ -1032,7 +999,7 @@ const UI = {
                     🟢 Simular Entrada
                     </button>
 
-                    <button> 
+                    <button 
                     class="btn btn-danger w-100"
                     onclick="UI.registrarAsistencia('Salida')">
                     🔴 Simular Salida
@@ -1043,135 +1010,24 @@ const UI = {
         `;
     },
 
-    registrarAsistencia: function (tipo) {
-    const ahora = new Date();
 
-    const fecha = ahora.toLocaleDateString("es-CL");
-    const hora = ahora.toLocaleTimeString("es-CL");
+    registrarAsistencia: function(tipo) {
 
-    alert(
-        `✅ Asistencia registrada\n\n` +
-        `Tipo: ${tipo}\n` +
-        `Fecha: ${fecha}\n` +
-        `Hora: ${hora}`,
-    );
+        const ahora = new Date();
 
-    window.location.hash = "#/inicio";
-    },
-};
+        const fecha = ahora.toLocaleDateString("es-CL");
+        const hora = ahora.toLocaleTimeString("es-CL");
 
-// Agregar dentro del objeto UI = { ... }
 
-const UI = {
-    renderPerfil: function () {
-    const container = document.getElementById("app-content");
-    if (!container) return;
+        alert(
+            `✅ Asistencia registrada\n\n` +
+            `Tipo: ${tipo}\n` +
+            `Fecha: ${fecha}\n` +
+            `Hora: ${hora}`
+        );
 
-    // Obtener datos del usuario actual desde StorageDB
-    const usuarioActual = StorageDB.get("jxp_current_user") || {
-        nombre: "",
-        accesibilidad: [],
-    };
 
-    // Pre-marcar las opciones guardadas si existen
-    const acc = usuarioActual.accesibilidad || [];
-    const bajoRuidoChecked = acc.includes("bajo_ruido") ? "checked" : "";
-    const instruccionesEscritasChecked = acc.includes("instrucciones_escritas")
-        ? "checked"
-        : "";
-    const estacionSentadaChecked = acc.includes("estacion_sentada")
-        ? "checked"
-        : "";
-    const luzTenueChecked = acc.includes("luz_tenue") ? "checked" : "";
+        window.location.hash = "#/inicio";
+    }
 
-    // Inyectar HTML con estilos Bootstrap 5
-    container.innerHTML = `
-    <div class="container my-4">
-        <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title mb-0">Perfil de Accesibilidad</h3>
-            </div>
-            <div class="card-body">
-                <form id="form-perfil" onsubmit="UI.guardarPerfil(event)">
-                <div class="mb-3">
-                    <label for="nombreUsuario" class="form-label font-weight-bold">Nombre Completo</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="nombreUsuario" 
-                    value="${usuarioActual.nombre || ""}" 
-                    required
-                    />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label font-weight-bold d-block">Necesidades de Accesibilidad</label>
-                    
-                    <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="bajo_ruido" value="bajo_ruido" ${bajoRuidoChecked}>
-                    <label class="form-check-label" for="bajo_ruido">Bajo ruido</label>
-                    </div>
-
-                    <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="instrucciones_escritas" value="instrucciones_escritas" ${instruccionesEscritasChecked}>
-                    <label class="form-check-label" for="instrucciones_escritas">Instrucciones escritas</label>
-                    </div>
-
-                    <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="estacion_sentada" value="estacion_sentada" ${estacionSentadaChecked}>
-                    <label class="form-check-label" for="estacion_sentada">Estación sentada</label>
-                    </div>
-
-                    <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="luz_tenue" value="luz_tenue" ${luzTenueChecked}>
-                    <label class="form-check-label" for="luz_tenue">Luz tenue</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
-                </form>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    `;
-    },
-
-    guardarPerfil: function (e) {
-    // Prevenir el comportamiento por defecto del formulario
-    if (e) e.preventDefault();
-
-    // Capturar los datos del formulario
-    const nombre = document.getElementById("nombreUsuario").value;
-
-    // Capturar los checkboxes marcados
-    const preferenciasAccesibilidad = [];
-    const opciones = [
-        "bajo_ruido",
-        "instrucciones_escritas",
-        "estacion_sentada",
-        "luz_tenue",
-    ];
-
-    opciones.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el && el.checked) {
-        preferenciasAccesibilidad.push(el.value);
-        }
-    });
-
-    // Leer y actualizar el objeto del usuario
-    const usuarioActual = StorageDB.get("jxp_current_user") || {};
-    usuarioActual.nombre = nombre;
-    usuarioActual.accesibilidad = preferenciasAccesibilidad;
-
-    // Guardar en LocalStorage a través de StorageDB
-    StorageDB.set("jxp_current_user", usuarioActual);
-
-    // Redirigir a la vista de inicio
-    window.location.hash = "#/inicio";
-    },
 };

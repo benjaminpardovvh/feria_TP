@@ -21,19 +21,18 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top d-none d-lg-flex"
         aria-label="Navegación principal">
         <div class="container-fluid px-4">
-            <a class="navbar-brand labxp-brand" href="#/home">JOB<span>XP</span></a>
+            <a class="navbar-brand labxp-brand" href="#pages/home">JOB<span>XP</span></a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
-                    <li class="nav-item"><a class="nav-link" href="#/home">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#/explorar">Explorar experiencias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#/como-funciona">Cómo funciona</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#/inclusion">Inclusión</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#/empresa">Para empresas</a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link" href="#pages/home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages/explorar">Explorar experiencias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages/como-funciona">Cómo funciona</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages/inclusion">Inclusión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages/empresa">Para empresas</a></li>
+                </ul><!--FAH-->
                 <div class="d-flex align-items-center gap-3">
-                    <a href="#/login" class="btn btn-outline-primary rounded-pill px-4 text-decoration-none">Iniciar
-                        sesión</a>
-                    <a href="#/registro" class="btn btn-primary rounded-pill px-4 text-decoration-none">Registrarme</a>
+                    <a href="#pages/login" class="btn btn-outline-primary rounded-pill px-4 text-decoration-none">Iniciar
+                    <a href="#pages/signin" class="btn btn-primary rounded-pill px-4 text-decoration-none">Registrarme</a>
                     <button onclick="UI.logout()" class="btn btn-light rounded-pill px-3 text-secondary border"><i
                             class="bi bi-box-arrow-right"></i> Salir</button>
                 </div>
@@ -44,8 +43,8 @@
     <!-- Header Mobile -->
     <header
         class="d-lg-none bg-white border-bottom fixed-top px-3 py-2 d-flex justify-content-between align-items-center">
-        <a href="#/home" class="labxp-brand mobile-brand">JOB<span>XP</span></a>
-        <div class="d-flex align-items-center gap-2"><a href="#/login" class="small fw-semibold text-dark text-decoration-none">Entrar</a><a href="#/registro" class="btn btn-primary btn-sm rounded-pill px-3">Crear cuenta</a></div>
+        <a href="#pages/home" class="labxp-brand mobile-brand">JOB<span>XP</span></a>
+        <div class="d-flex align-items-center gap-2"><a href="#pages/login" class="small fw-semibold text-dark text-decoration-none">Entrar</a><a href="#/registro" class="btn btn-primary btn-sm rounded-pill px-3">Crear cuenta</a></div>
     </header>
 
     <!-- Contenedor Principal (Vistas dinámicas) -->
@@ -53,19 +52,19 @@
 
     <!-- Navegación Inferior (Mobile) -->
     <nav class="mobile-nav d-lg-none fixed-bottom bg-white border-top d-flex justify-content-around py-2">
-        <a href="#/home" class="text-center text-decoration-none text-secondary active-nav">
+        <a href="#pages/home" class="text-center text-decoration-none text-secondary active-nav">
             <i class="bi bi-house-door fs-4 d-block"></i>
             <span class="small">Inicio</span>
         </a>
-        <a href="#/explorar" class="text-center text-decoration-none text-secondary">
+        <a href="#pages/explorar" class="text-center text-decoration-none text-secondary">
             <i class="bi bi-search fs-4 d-block"></i>
             <span class="small">Explorar</span>
         </a>
-        <a href="#/pasaporte" class="text-center text-decoration-none text-secondary">
+        <a href="#pages/pasaporte" class="text-center text-decoration-none text-secondary">
             <i class="bi bi-award fs-4 d-block"></i>
             <span class="small">Pasaporte</span>
         </a>
-        <a href="#/perfil" class="text-center text-decoration-none text-secondary">
+        <a href="#pages/perfil" class="text-center text-decoration-none text-secondary">
             <i class="bi bi-person fs-4 d-block"></i>
             <span class="small">Perfil</span>
         </a>
