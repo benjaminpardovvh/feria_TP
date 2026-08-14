@@ -22,8 +22,6 @@ const Router = {
         // por el nombre de la nueva función que creen en ui.js (ej: 'renderPerfil')
         '#/perfil': 'renderPlaceholder',
         '#/asistencia': 'renderPlaceholder',
-        '#/empresa': 'renderPlaceholder',
-        '#/empresa/publicar': 'renderPlaceholder',
         '#/evaluaciones': 'renderEvaluaciones',
         '#/denuncias': 'renderPlaceholder'
     },

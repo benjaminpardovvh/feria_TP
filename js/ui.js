@@ -38,7 +38,7 @@ const UI = {
                                         Explorar experiencias
                                     </a>
 
-                                    <a href="#/empresa" class="btn labxp-outline-btn">
+                                    <a href="#/inicio" class="btn labxp-outline-btn">
                                         <i class="bi bi-briefcase me-2"></i>
                                         Soy empresa
                                     </a>
@@ -417,7 +417,7 @@ const UI = {
                                     y encuentra jóvenes compatibles con tus necesidades.
                                 </p>
 
-                                <a href="#/empresa" class="btn labxp-primary-btn">
+                                <a href="#/inicio" class="btn labxp-primary-btn">
                                     Publicar una microexperiencia
                                     <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
@@ -472,9 +472,9 @@ const UI = {
 
                             <div class="col-6 col-lg-2">
                                 <strong>Para empresas</strong>
-                                <a href="#/empresa">Publicar experiencia</a>
-                                <a href="#/empresa">Encontrar talento</a>
-                                <a href="#/empresa">Evaluaciones</a>
+                                <a href="#/inicio">Publicar experiencia</a>
+                                <a href="#/inicio">Encontrar talento</a>
+                                <a href="#/inicio">Evaluaciones</a>
                             </div>
 
                             <div class="col-6 col-lg-2">
@@ -541,7 +541,7 @@ const UI = {
 
         if (user) {
             StorageDB.set('jxp_current_user', user);
-            window.location.hash = role === 'joven' ? '#/inicio' : '#/empresa';
+            window.location.hash = '#/inicio';
         } else {
             alert("Error: No se encontró un usuario demo para este rol. Por favor, regístrate primero.");
         }
@@ -621,7 +621,7 @@ const UI = {
         StorageDB.set('jxp_current_user', newUser); // Autologuear
 
         alert("¡Registro exitoso! Tus datos se guardaron en LocalStorage.");
-        window.location.hash = role === 'joven' ? '#/inicio' : '#/empresa';
+        window.location.hash = '#/inicio';
     },
     logout: function () {
         // Limpiamos el usuario actual del LocalStorage

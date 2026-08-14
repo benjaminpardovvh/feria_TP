@@ -25,6 +25,9 @@ Prototipo web académico hecho con **HTML, CSS, Bootstrap y JavaScript puro**. E
 **Joven:** `camila@jobxp.cl` / `123456`  
 **Empresa:** `empresa@jobxp.cl` / `123456`
 
+
+- **Evaluación cruzada por clase:** los jóvenes pueden calificar empresas y las empresas pueden calificar jóvenes. El selector y la validación JavaScript bloquean cualquier intento de evaluar una cuenta de la misma clase; además se evita duplicar la evaluación de la misma contraparte desde una cuenta.
+
 ## Importante
 Este es un prototipo frontend. La autenticación, CV y datos se guardan en `localStorage`; no hay backend ni Firebase conectado todavía. La verificación biométrica, QR/IoT y geolocalización son simulaciones.
 

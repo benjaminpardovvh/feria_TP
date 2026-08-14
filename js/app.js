@@ -78,7 +78,7 @@ function jobCard(job,user){const m=matchJob(user,job);return `<div class="cardx 
 
 function renderNav(){
   const u=currentUser(); const box=document.getElementById('navAccount');
-  box.innerHTML=u?`<div class="d-flex align-items-center gap-2">${u.role==='empresa'?'<button type="button" class="btn btn-primary btn-sm d-none d-md-inline-flex" onclick="goEmpresa()"><i class="bi bi-building me-1"></i>Panel empresa</button>':''}<div class="dropdown"><button class="btn btn-light border dropdown-toggle" type="button" data-bs-toggle="dropdown"><span class="avatar d-inline-grid me-2" style="width:32px;height:32px;font-size:.7rem">${initials(u.name)}</span>${esc(u.name.split(' ')[0])}</button><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="#/perfil"><i class="bi bi-person me-2"></i>Mi perfil</a></li>${u.role==='joven'?'<li><a class="dropdown-item" href="#/postulaciones"><i class="bi bi-send me-2"></i>Mis postulaciones</a></li><li><a class="dropdown-item" href="#/mensajes"><i class="bi bi-chat-dots me-2"></i>Mensajes</a></li><li><a class="dropdown-item" href="#/pasaporte"><i class="bi bi-award me-2"></i>Pasaporte laboral</a></li>':'<li><a class="dropdown-item" href="#/postulaciones"><i class="bi bi-people me-2"></i>Postulaciones recibidas</a></li><li><a class="dropdown-item" href="#/mensajes"><i class="bi bi-chat-dots me-2"></i>Mensajes</a></li><li><button type="button" class="dropdown-item" onclick="goEmpresa()"><i class="bi bi-building me-2"></i>Panel empresa</button></li>'}<li><hr class="dropdown-divider"></li><li><button type="button" class="dropdown-item text-danger" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</button></li></ul></div></div>`:`<a href="#/login" class="btn btn-outline-primary">Iniciar sesión</a><a href="#/registro" class="btn btn-primary">Registrarme</a>`;
+  box.innerHTML=u?`<div class="d-flex align-items-center gap-2">${u.role==='empresa'?'<button type="button" class="btn btn-primary btn-sm d-none d-md-inline-flex" onclick="goEmpresa()"><i class="bi bi-building me-1"></i>Panel empresa</button>':''}<div class="dropdown"><button class="btn btn-light border dropdown-toggle" type="button" data-bs-toggle="dropdown"><span class="avatar d-inline-grid me-2" style="width:32px;height:32px;font-size:.7rem">${initials(u.name)}</span>${esc(u.name.split(' ')[0])}</button><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="#/perfil"><i class="bi bi-person me-2"></i>Mi perfil</a></li>${u.role==='joven'?'<li><a class="dropdown-item" href="#/postulaciones"><i class="bi bi-send me-2"></i>Mis postulaciones</a></li><li><a class="dropdown-item" href="#/mensajes"><i class="bi bi-chat-dots me-2"></i>Mensajes</a></li><li><a class="dropdown-item" href="#/pasaporte"><i class="bi bi-award me-2"></i>Pasaporte laboral</a></li><li><a class="dropdown-item" href="#/evaluaciones"><i class="bi bi-star me-2"></i>Evaluar empresas</a></li>':'<li><a class="dropdown-item" href="#/postulaciones"><i class="bi bi-people me-2"></i>Postulaciones recibidas</a></li><li><a class="dropdown-item" href="#/mensajes"><i class="bi bi-chat-dots me-2"></i>Mensajes</a></li><li><a class="dropdown-item" href="#/evaluaciones"><i class="bi bi-star me-2"></i>Evaluar jóvenes</a></li><li><button type="button" class="dropdown-item" onclick="goEmpresa()"><i class="bi bi-building me-2"></i>Panel empresa</button></li>'}<li><hr class="dropdown-divider"></li><li><button type="button" class="dropdown-item text-danger" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</button></li></ul></div></div>`:`<a href="#/login" class="btn btn-outline-primary">Iniciar sesión</a><a href="#/registro" class="btn btn-primary">Registrarme</a>`;
   const logoutBtn=document.getElementById('logoutBtn');
   if(logoutBtn) logoutBtn.addEventListener('click',logout);
 }
@@ -141,9 +141,229 @@ function saveCompanyProfile(e){e.preventDefault();const d=db(),u=currentUser();i
 function comoFunciona(){document.querySelector('#app').innerHTML=`<div class="text-center mb-5"><h1 class="section-title">¿Cómo funciona JOBXP?</h1><p class="text-muted">Un camino simple para convertir microexperiencias en experiencia laboral certificada.</p></div><div class="row g-3">${[['01','Crea tu perfil','Agrega tus datos, habilidades, disponibilidad y preferencias de accesibilidad.'],['02','Encuentra tu match','JOBXP prioriza ofertas según zona, modalidad y necesidades de accesibilidad.'],['03','Realiza la experiencia','La empresa entrega instrucciones y condiciones claras.'],['04','Evalúa y certifica','Ambas partes se evalúan y el joven suma experiencia a su pasaporte.']].map(x=>`<div class="col-md-6 col-lg-3"><div class="cardx p-4 h-100"><div class="display-6 fw-bold text-primary">${x[0]}</div><h4 class="fw-bold mt-3">${x[1]}</h4><p class="text-muted">${x[2]}</p></div></div>`).join('')}</div><div class="cardx p-4 mt-4"><h3 class="fw-bold">Reglas antiabuso</h3><p class="text-muted">JOBXP limita la cantidad de jóvenes simultáneos según el tamaño de la empresa, prohíbe duplicar ofertas para reemplazar puestos permanentes y establece un máximo del 20% de la dotación proveniente de la plataforma.</p></div>`}
 function inclusion(){document.querySelector('#app').innerHTML=`<div class="mb-4"><h1 class="section-title">Inclusión asistida</h1><p class="text-muted">La accesibilidad no es un extra: forma parte del match y de la preparación de cada experiencia.</p></div><div class="row g-3">${[['♿','Movilidad reducida','Estaciones sentadas, desplazamientos mínimos y accesos adaptados.'],['🔇','Entornos sensoriales','Bajo ruido, luz tenue y condiciones previsibles.'],['📝','Comunicación accesible','Instrucciones escritas, chat y comunicación clara.'],['🏠','Teletrabajo','Experiencias 100% remotas para quienes lo prefieran.'],['🧩','Neurodivergencia','Guía de anticipación, paso a paso visual y botón de pausa para regulación.'],['👁️','Baja visión / ceguera','Interfaz compatible con lectores de pantalla y opciones de alto contraste.']].map(x=>`<div class="col-md-6 col-lg-4"><div class="cardx p-4 h-100"><div class="fs-2">${x[0]}</div><h5 class="fw-bold mt-2">${x[1]}</h5><p class="text-muted mb-0">${x[2]}</p></div></div>`).join('')}</div><div class="cardx p-4 mt-4"><h4 class="fw-bold">Sello “Empresa Inclusiva”</h4><p class="text-muted mb-0">Las empresas que completan experiencias con jóvenes con discapacidad o neurodivergencia pueden recibir una insignia especial para aumentar la confianza de futuros postulantes.</p></div>`}
 
-function evaluaciones(){if(!requireLogin())return;const d=db(),u=currentUser();document.querySelector('#app').innerHTML=`<div class="mb-4"><h1 class="section-title">Evaluaciones</h1><p class="text-muted">La evaluación es bidireccional: empresa → joven y joven → empresa.</p></div><div class="row g-4"><div class="col-lg-6"><div class="cardx p-4"><h4 class="fw-bold">${u.role==='joven'?'Evaluar empresa':'Evaluar joven'}</h4><p class="text-muted small">${u.role==='joven'?'Ambiente laboral, trato y cumplimiento de pago.':'Puntualidad, responsabilidad y adaptación.'}</p><select id="rateTarget" class="form-select mb-3"><option>Selecciona una experiencia</option>${d.jobs.map(j=>`<option value="${j.id}">${esc(j.title)} · ${esc(j.company)}</option>`).join('')}</select><div class="mb-3"><label class="form-label fw-semibold">Puntaje</label><div class="rating-stars" id="stars">${[1,2,3,4,5].map(i=>`<button type="button" onclick="setRating(${i})" class="off" data-star="${i}">★</button>`).join('')}</div></div><textarea id="ratingComment" class="form-control" rows="3" placeholder="Comentario opcional"></textarea><button class="btn btn-primary mt-3" onclick="submitRating()">Enviar evaluación</button></div></div><div class="col-lg-6"><div class="cardx p-4"><h4 class="fw-bold">Seguridad y denuncias</h4><p class="text-muted">Puedes reportar maltrato, acoso, incumplimiento de pagos, cambios de tareas, horarios inadecuados o discriminación.</p><a href="#/asistencia" class="btn btn-outline-primary w-100 mb-2">Simular asistencia QR</a><button class="btn btn-outline-danger w-100" onclick="reportIssue()">Crear denuncia</button></div></div></div>`}
-let selectedRating=0;function setRating(n){selectedRating=n;document.querySelectorAll('[data-star]').forEach(b=>b.classList.toggle('off',Number(b.dataset.star)>n))}
-function submitRating(){if(!selectedRating){toast('Selecciona una puntuación','warning');return}const d=db(),u=currentUser(),job=d.jobs.find(j=>j.id===Number(document.getElementById('rateTarget').value));if(!job){toast('Selecciona una experiencia','warning');return}d.ratings.push({id:Date.now(),emisor:u.id,receptor:u.role==='joven'?job.company:u.id,puntaje:selectedRating,comentario:document.getElementById('ratingComment').value,jobId:job.id,tipo:u.role==='joven'?'joven_empresa':'empresa_joven'});saveDB(d);toast('Evaluación guardada. ¡Gracias!');selectedRating=0}
+function evaluationTargetRole(targetRole){return targetRole==='joven'?'joven':'empresa';}
+function getEvaluationAverage(d,targetRole,targetId){
+  const rows=d.ratings.filter(r=>r.receptorRole===targetRole && Number(r.receptorId)===Number(targetId));
+  if(!rows.length)return null;
+  return Number((rows.reduce((sum,r)=>sum+Number(r.puntaje||0),0)/rows.length).toFixed(1));
+}
+function evaluaciones(){
+  if(!requireLogin())return;
+  const d=db(),u=currentUser();
+  const isYoung=u.role==='joven';
+  const targetRole=isYoung?'empresa':'joven';
+
+  const companies=(d.companies||[]).map(c=>({id:c.id,name:c.name,zone:c.zone||c.location||''}));
+  const youngs=(d.users||[]).filter(x=>x.role==='joven').map(y=>({id:y.id,name:y.name,zone:y.zone||''}));
+  const targets=isYoung?companies:youngs;
+  const myExisting=(d.ratings||[]).filter(r=>Number(r.emisorId||r.emisor)===Number(u.id));
+
+  const targetOptions=targets.map(t=>{
+    const avg=getEvaluationAverage(d,targetRole,t.id);
+    return `<option value="${t.id}">${esc(t.name)}${t.zone?' · '+esc(t.zone):''}${avg?` · ${avg} ★`:''}</option>`;
+  }).join('');
+
+  const criteria=isYoung
+    ? ['Ambiente laboral','Trato y respeto','Cumplimiento del pago','Respeto de adecuaciones']
+    : ['Puntualidad','Responsabilidad','Cumplimiento','Adaptación a la tarea'];
+
+  const accessibility=isYoung ? [
+    ['movilidad','Movilidad reducida','bi-universal-access'],
+    ['visual','Discapacidad visual','bi-eye'],
+    ['auditiva','Discapacidad auditiva','bi-ear'],
+    ['cognitiva','Discapacidad cognitiva','bi-brain'],
+    ['mental','Salud mental','bi-heart-pulse'],
+    ['otra','Otra discapacidad','bi-person-wheelchair']
+  ] : [];
+
+  document.querySelector('#app').innerHTML=`
+    <div class="eval-page">
+      <div class="eval-shell">
+        <div class="eval-heading">
+          <div>
+            <span class="eval-kicker"><i class="bi bi-stars"></i> REPUTACIÓN JOBXP</span>
+            <h1>Evaluaciones</h1>
+            <p>La reputación funciona en ambos sentidos: los jóvenes evalúan empresas y las empresas evalúan jóvenes.</p>
+          </div>
+        </div>
+
+        <div class="eval-rule">
+          <div class="eval-rule-icon"><i class="bi bi-arrow-left-right"></i></div>
+          <div><strong>Regla de evaluación</strong><span>Solo puedes evaluar a una cuenta de la clase contraria. Un joven no puede evaluar a otro joven y una empresa no puede evaluar a otra empresa.</span></div>
+        </div>
+
+        <div class="eval-grid">
+          <section class="eval-card eval-main-card">
+            <div class="eval-card-title">
+              <div class="eval-title-icon">${isYoung?'<i class="bi bi-person-fill"></i>':'<i class="bi bi-building-fill"></i>'}</div>
+              <div><h2>${isYoung?'Evalúa a una empresa':'Evalúa a un joven'}</h2><p>${isYoung?'Cuéntanos cómo fue la experiencia laboral con la empresa.':'Evalúa el desempeño del joven durante la microexperiencia.'}</p></div>
+            </div>
+
+            <div class="eval-account">
+              <span>Tu cuenta</span><strong>${esc(u.name)}</strong><b class="eval-role ${isYoung?'green':'purple'}">${isYoung?'JOVEN':'EMPRESA'}</b>
+            </div>
+
+            <form id="evaluationForm" novalidate>
+              <div class="eval-field">
+                <label for="rateTarget">¿A quién quieres evaluar?</label>
+                <select id="rateTarget" class="eval-select" required>
+                  <option value="">Selecciona ${isYoung?'una empresa':'un joven'}</option>
+                  ${targetOptions}
+                </select>
+                <small>La lista solo contiene cuentas de la clase contraria a la tuya.</small>
+              </div>
+
+              <div class="eval-field">
+                <label>Puntuación</label>
+                <div class="eval-stars" id="stars" role="radiogroup" aria-label="Puntuación de 1 a 5 estrellas">
+                  ${[1,2,3,4,5].map(i=>`<button type="button" data-star="${i}" aria-label="${i} estrellas" aria-checked="false"><i class="bi bi-star-fill"></i></button>`).join('')}
+                </div>
+                <small id="ratingHint">Selecciona una puntuación de 1 a 5.</small>
+              </div>
+
+              <div class="eval-field">
+                <label for="ratingComment">Comentario <em>(opcional)</em></label>
+                <textarea id="ratingComment" class="eval-textarea" rows="4" maxlength="500" placeholder="${isYoung?'Ambiente laboral, trato, cumplimiento del pago y adecuaciones acordadas.':'Puntualidad, responsabilidad, cumplimiento y adaptación a las tareas.'}"></textarea>
+                <div class="eval-counter"><span>Tu comentario ayuda a mejorar la experiencia.</span><strong id="ratingCounter">0/500</strong></div>
+              </div>
+
+              ${isYoung?`<div class="eval-accessibility">
+                <div class="eval-section-heading"><div><h3>Adecuaciones para personas con discapacidad</h3><p>Indica qué tipos de adecuaciones mostró la empresa durante la experiencia.</p></div><i class="bi bi-universal-access"></i></div>
+                <div class="eval-check-grid">
+                  ${accessibility.map(([key,label,icon])=>`<label class="eval-check"><input type="checkbox" name="accommodation" value="${key}"><span class="eval-check-box"><i class="bi bi-check"></i></span><span class="eval-check-content"><i class="bi ${icon}"></i>${label}</span></label>`).join('')}
+                </div>
+              </div>`:''}
+
+              <div class="eval-actions">
+                <button type="button" class="eval-btn secondary" id="clearEvaluation">Limpiar</button>
+                <button type="submit" class="eval-btn primary"><i class="bi bi-send"></i> Enviar evaluación</button>
+              </div>
+              <div id="evaluationMessage" class="eval-message" role="status" aria-live="polite"></div>
+            </form>
+          </section>
+
+          <aside class="eval-side">
+            <div class="eval-card eval-how">
+              <h2>¿Cómo funciona?</h2>
+              <div class="eval-steps">
+                <div><b class="one">1</b><p><strong>Termina la experiencia</strong><span>La evaluación ocurre después de una microexperiencia.</span></p></div>
+                <div><b class="two">2</b><p><strong>Evalúa a la contraparte</strong><span>${isYoung?'Tú evalúas a la empresa.':'La empresa evalúa al joven.'}</span></p></div>
+                <div><b class="three">3</b><p><strong>Se actualiza la reputación</strong><span>El promedio queda asociado al perfil evaluado.</span></p></div>
+              </div>
+              <hr>
+              <h3>Criterios ${isYoung?'para empresas':'para jóvenes'}</h3>
+              <div class="eval-tags">${criteria.map(x=>`<span>${esc(x)}</span>`).join('')}</div>
+              <div class="eval-protection"><i class="bi bi-shield-check"></i><p><strong>Evaluación justa</strong><br>No se utilizan criterios basados en apariencia, lenguaje corporal, tics o habilidades sociales tradicionales.</p></div>
+            </div>
+          </aside>
+        </div>
+
+        <section class="eval-card eval-history">
+          <div class="eval-history-head"><div><h2>Mis evaluaciones enviadas</h2><p>Revisa las evaluaciones que ya registraste.</p></div><span>${myExisting.length}</span></div>
+          ${myExisting.length?`<div class="eval-history-grid">${myExisting.slice().reverse().map(r=>`<article><div class="eval-history-top"><strong>${esc(r.receptorNombre||'Cuenta evaluada')}</strong><span>${'★'.repeat(Number(r.puntaje||0))}${'☆'.repeat(5-Number(r.puntaje||0))}</span></div><small>${r.receptorRole==='empresa'?'Empresa':'Joven'} · ${new Date(r.fecha).toLocaleDateString('es-CL')}</small>${r.comentario?`<p>“${esc(r.comentario)}”</p>`:''}</article>`).join('')}</div>`:'<div class="eval-empty"><i class="bi bi-chat-square-text"></i><p>Todavía no has enviado evaluaciones.</p></div>'}
+        </section>
+      </div>
+    </div>`;
+
+  selectedRating=0;
+  const form=document.getElementById('evaluationForm');
+  const counter=document.getElementById('ratingCounter');
+  const textarea=document.getElementById('ratingComment');
+  textarea.addEventListener('input',()=>counter.textContent=`${textarea.value.length}/500`);
+
+  document.querySelectorAll('[data-star]').forEach(btn=>{
+    btn.addEventListener('click',()=>setRating(Number(btn.dataset.star)));
+    btn.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();btn.nextElementSibling?.focus()}
+      if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();btn.previousElementSibling?.focus()}
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();setRating(Number(btn.dataset.star))}
+    });
+  });
+  document.getElementById('clearEvaluation').addEventListener('click',()=>{
+    form.reset(); selectedRating=0; setRating(0); counter.textContent='0/500'; document.getElementById('evaluationMessage').className='eval-message'; document.getElementById('evaluationMessage').textContent='';
+  });
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const targetId=Number(document.getElementById('rateTarget').value);
+    const target=targetRole==='joven'?d.users.find(x=>x.role==='joven'&&Number(x.id)===targetId):d.companies.find(x=>Number(x.id)===targetId);
+    const msg=document.getElementById('evaluationMessage');
+    if(!targetId){msg.className='eval-message error';msg.textContent='Selecciona a quién quieres evaluar.';return}
+    if(!selectedRating){msg.className='eval-message error';msg.textContent='Selecciona una puntuación antes de enviar.';return}
+    if(!target){msg.className='eval-message error';msg.textContent='La cuenta seleccionada no existe.';return}
+    const duplicate=d.ratings.some(r=>Number(r.emisorId||r.emisor)===Number(u.id)&&r.receptorRole===targetRole&&Number(r.receptorId)===targetId);
+    if(duplicate){msg.className='eval-message error';msg.textContent='Ya has evaluado a esta cuenta en este prototipo.';return}
+
+    const accommodations=[...form.querySelectorAll('input[name="accommodation"]:checked')].map(x=>x.value);
+    const evaluation={id:Date.now(),emisorId:u.id,emisorRole:u.role,emisorNombre:u.name,receptorId:target.id,receptorRole:targetRole,receptorNombre:target.name,puntaje:selectedRating,comentario:textarea.value.trim(),adecuaciones:accommodations,fecha:new Date().toISOString()};
+    d.ratings.push(evaluation);
+    const avg=getEvaluationAverage(d,targetRole,target.id);
+    if(targetRole==='empresa'){const c=d.companies.find(x=>Number(x.id)===Number(target.id));if(c)c.rating=avg}else{const y=d.users.find(x=>x.role==='joven'&&Number(x.id)===Number(target.id));if(y)y.rating=avg}
+    saveDB(d);
+    msg.className='eval-message success';msg.textContent='Evaluación enviada correctamente. ¡Gracias por tu retroalimentación!';
+    form.querySelectorAll('input,select,textarea,button').forEach(el=>{if(el.id!=='clearEvaluation')el.disabled=true});
+  });
+}
+
+let selectedRating=0;
+function setRating(n){
+  selectedRating=n;
+  document.querySelectorAll('[data-star]').forEach(b=>{
+    const value=Number(b.dataset.star);
+    const active=value<=n;
+    b.classList.toggle('off',!active);
+    b.classList.toggle('active',active);
+    b.setAttribute('aria-checked',value===n?'true':'false');
+  });
+  const hint=document.getElementById('ratingHint');
+  if(hint) hint.textContent=n?`Has seleccionado ${n} de 5 estrellas.`:'Selecciona una puntuación de 1 a 5.';
+}
+function submitRating(){
+  const d=db(),u=currentUser();
+  const targetEl=document.getElementById('rateTarget');
+  const targetId=Number(targetEl?.value);
+  const targetRole=u.role==='joven'?'empresa':'joven';
+  if(!targetId){toast('Selecciona a quién quieres evaluar','warning');return}
+  if(!selectedRating){toast('Selecciona una puntuación','warning');return}
+
+  // Regla de seguridad: jamás permitir evaluaciones entre cuentas de la misma clase.
+  const target=targetRole==='joven'
+    ? d.users.find(x=>x.role==='joven' && Number(x.id)===targetId)
+    : d.companies.find(x=>Number(x.id)===targetId);
+  if(!target){toast('La cuenta seleccionada no existe','danger');return}
+  if(targetRole===u.role){toast('No puedes evaluar a una cuenta de tu misma clase','danger');return}
+
+  // Evita que el mismo emisor duplique una evaluación sobre la misma contraparte.
+  const duplicate=d.ratings.some(r=>Number(r.emisorId||r.emisor)===Number(u.id) && r.receptorRole===targetRole && Number(r.receptorId)===targetId);
+  if(duplicate){toast('Ya evaluaste a esta cuenta en el prototipo','warning');return}
+
+  const evaluation={
+    id:Date.now(),
+    emisorId:u.id,
+    emisorRole:u.role,
+    emisorNombre:u.name,
+    receptorId:target.id,
+    receptorRole:targetRole,
+    receptorNombre:target.name,
+    puntaje:selectedRating,
+    comentario:document.getElementById('ratingComment').value.trim(),
+    fecha:new Date().toISOString()
+  };
+  d.ratings.push(evaluation);
+  const avg=getEvaluationAverage(d,targetRole,target.id);
+  if(targetRole==='empresa'){
+    const c=d.companies.find(x=>Number(x.id)===Number(target.id));
+    if(c)c.rating=avg;
+  }else{
+    const y=d.users.find(x=>x.role==='joven' && Number(x.id)===Number(target.id));
+    if(y)y.rating=avg;
+  }
+  saveDB(d);
+  selectedRating=0;
+  document.querySelectorAll('[data-star]').forEach(b=>b.classList.add('off'));
+  toast('Evaluación guardada correctamente','success');
+  setTimeout(evaluaciones,100);
+}
 function reportIssue(){const d=db(),u=currentUser();const reason=prompt('Escribe el motivo de la denuncia:');if(!reason)return;d.reports.push({id:Date.now(),userId:u.id,reason,status:'Pendiente'});saveDB(d);toast('Denuncia registrada para revisión','warning')}
 function asistencia(){if(!requireLogin())return;const d=db(),u=currentUser();document.querySelector('#app').innerHTML=`<div class="row justify-content-center"><div class="col-md-7"><div class="cardx p-4 text-center"><h2 class="fw-bold">Asistencia</h2><p class="text-muted">Simulación del QR único de la empresa. En una implementación real, este QR registra entrada y salida.</p><div class="border rounded-4 p-4 my-4"><div class="display-1">▦</div><strong>Código JOBXP-DEMO-001</strong></div><button class="btn btn-primary" onclick="scanQR()">Simular escaneo</button><div id="attendanceResult" class="mt-3"></div></div></div></div>`}
 function scanQR(){const d=db(),u=currentUser();const now=new Date().toLocaleString('es-CL');d.attendance.push({userId:u.id,date:new Date().toISOString(),type:'entrada',display:now,company:'JOBXP'});saveDB(d);document.getElementById('attendanceResult').innerHTML=`<div class="alert alert-success">✓ Entrada registrada: ${now}<br><small>La ubicación se registraría solo con autorización del usuario.</small></div>`}
