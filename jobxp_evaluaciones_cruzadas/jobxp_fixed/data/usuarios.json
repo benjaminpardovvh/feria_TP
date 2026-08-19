@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nombre": "Camila R.",
+    "rol": "joven",
+    "edad": 21,
+    "ubicacion": "Santiago Centro",
+    "habilidades": ["Organización", "Herramientas digitales", "Atención al detalle", "Responsabilidad"],
+    "disponibilidad": ["Mañana"],
+    "modalidad_preferida": "Presencial",
+    "accesibilidad": ["bajo_ruido", "instrucciones_escritas", "estacion_sentada"],
+    "estadisticas": {
+      "experiencias": 3,
+      "horas": 42,
+      "promedio": 4.8
+    }
+  }
+]
